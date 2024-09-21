@@ -1,0 +1,52 @@
+.scrollToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  width: 50px; /* Adaugă o lățime fixă */
+  height: 50px; /* Adaugă o înălțime fixă */
+  font-size: 24px; /* Icon-ul devine mai vizibil */
+  border-radius: 50%; /* Asigură că butonul rămâne rotund */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: darken(var(--accent-color), 10%);
+  transform: translateY(-5px); /* Efect de ridicare la hover */
+}
+
+/* Media Query pentru ecrane mici (dispozitive mobile) */
+@media (max-width: 768px) {
+  .scrollToTop {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .button {
+    width: 40px; /* Dimensiuni mai mici pentru mobile */
+    height: 40px;
+    font-size: 20px; /* Icon puțin mai mic */
+  }
+}
+
+/* Media Query pentru ecrane foarte mici */
+@media (max-width: 480px) {
+  .scrollToTop {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px; /* Icon mai mic pentru dispozitive foarte mici */
+  }
+}

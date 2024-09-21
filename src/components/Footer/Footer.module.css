@@ -1,0 +1,122 @@
+.footer {
+  background-color: var(--primary-bg-color);
+  padding: 40px 20px 60px;
+  color: var(--primary-text-color);
+  font-family: var(--font-family-secondary);
+  text-align: center;
+}
+
+.logoContainer {
+  margin-bottom: 0px; /* Am redus spațiul dintre logo și secțiuni */
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px; /* Am redus spațiul dintre secțiuni */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 20px; /* Am redus padding-ul de jos */
+}
+
+.contactInfo,
+.quickLinks,
+.socialMedia {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+  margin-top: 0; /* Am eliminat marginea de sus a secțiunilor */
+}
+
+.contactInfo h4,
+.quickLinks h4,
+.socialMedia h4 {
+  font-family: var(--font-family-primary);
+  font-size: 22px;
+  margin-bottom: 10px; /* Am redus spațiul dintre titlu și conținut */
+  color: var(--primary-text-color);
+}
+
+.contactInfo p,
+.quickLinks ul li,
+.socialMedia {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.quickLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quickLinks ul li {
+  margin-bottom: 8px; /* Am redus spațiul dintre elementele din listă */
+}
+
+.quickLinks ul li a {
+  text-decoration: none;
+  color: var(--primary-text-color);
+  transition: color 0.3s ease;
+}
+
+.quickLinks ul li a:hover {
+  color: var(--accent-color);
+}
+
+.socialIcons {
+  display: flex;
+  gap: 20px;
+}
+
+.socialIcons a {
+  font-size: 24px;
+  color: var(--primary-text-color);
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: var(--accent-color);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 20px 0; /* Am redus distanța dintre secțiuni și copyright */
+}
+
+.copyright {
+  font-size: 14px;
+  color: var(--primary-text-color);
+}
+
+.copyright p {
+  margin: 5px 0;
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Am redus spațiul dintre secțiuni pe mobil */
+  }
+
+  .contactInfo,
+  .quickLinks,
+  .socialMedia {
+    text-align: center;
+  }
+
+  .socialIcons {
+    justify-content: center;
+  }
+}
