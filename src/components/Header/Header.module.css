@@ -1,42 +1,52 @@
-/* Header */
+/* General Header Styling */
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: var(--header-height);
-  background-color: transparent; /* Invizibil inițial */
+  background: var(--primary-bg-color);
   color: var(--header-text-color);
   padding: 0 20px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: var(--z-index-header);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-sizing: border-box;
 }
 
 .scrolled {
-  background-color: var(--header-bg-color); /* Vizibil după scroll */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Container */
 .headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* Logo */
+/* Logo Styling */
 .logo {
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .logoImage {
-  width: 250px;
+  max-width: 250px;
   height: auto;
   transition: transform 0.3s ease-in-out;
 }
@@ -47,15 +57,33 @@
 
 /* Navigation */
 .nav {
-  display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--primary-bg-color);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navOpen {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .navLinks {
   list-style: none;
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 25px;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -65,9 +93,9 @@
   text-decoration: none;
   color: var(--header-text-color);
   font-family: var(--font-family-secondary);
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
-  padding: 10px 15px;
+  font-size: 1.8rem;
+  transition: color 0.3s ease-in-out;
+  padding: 10px 20px;
   position: relative;
 }
 
@@ -75,38 +103,35 @@
   content: "";
   position: absolute;
   width: 0%;
-  height: 2px;
+  height: 3px;
   background-color: var(--accent-color);
-  left: 0;
+  left: 50%;
   bottom: -5px;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
 .navLinks li a:hover::after {
   width: 100%;
+  left: 0;
 }
 
-.navLinks li a:focus {
-  outline: none;
-  color: var(--accent-color);
-}
-
-/* Icoane sociale */
+/* Social Icons */
 .socialIcons {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 25px;
+  margin-top: 10px;
 }
 
 .socialIcons a {
-  font-size: 24px;
+  font-size: 26px;
   color: var(--header-text-color);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socialIcons a:hover {
   color: var(--accent-color);
+  transform: scale(1.2);
 }
 
 /* Hamburger Menu */
@@ -114,8 +139,8 @@
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 25px;
-  height: 20px;
+  width: 30px;
+  height: 22px;
   cursor: pointer;
   z-index: 1100;
   transition: transform 0.3s ease-in-out;
@@ -125,6 +150,7 @@
   width: 100%;
   height: 3px;
   background-color: var(--header-text-color);
+  border-radius: 2px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -142,60 +168,59 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .header {
-    background-color: transparent; /* Invizibil pe mobil */
-  }
-
-  .scrolled,
-  .navOpen {
-    background-color: var(
-      --header-bg-color
-    ); /* Vizibil când meniul este deschis */
+  .hamburger {
+    display: flex;
   }
 
   .nav {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    height: 50%;
-    width: 100%;
-    background-color: transparent;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    z-index: 1000;
-  }
-
-  .navOpen {
-    transform: translateX(0);
-    opacity: 1;
-    background-color: var(--header-bg-color); /* Vizibil cu meniul deschis */
+    display: flex;
   }
 
   .navLinks {
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
+    gap: 25px;
   }
 
   .navLinks li a {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 15px 0;
   }
 
+  .socialIcons {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 769px) {
   .hamburger {
-    display: flex;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    display: none;
+  }
+
+  .nav {
+    display: flex !important;
+    position: static;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .navLinks {
+    flex-direction: row;
+    gap: 35px;
+  }
+
+  .navLinks li a {
+    font-size: 1.2rem;
+    padding: 10px 15px;
   }
 
   .socialIcons {
-    margin-top: 30px;
+    margin-left: 30px;
   }
 }

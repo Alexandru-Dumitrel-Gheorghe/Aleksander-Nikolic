@@ -31,7 +31,11 @@ const ScrollToTop = () => {
   return (
     <div className={styles.scrollToTop}>
       {isVisible && (
-        <button onClick={scrollToTop} className={styles.button}>
+        <button
+          onClick={scrollToTop}
+          className={styles.button}
+          aria-label="Scroll to top"
+        >
           &#8679;
         </button>
       )}
